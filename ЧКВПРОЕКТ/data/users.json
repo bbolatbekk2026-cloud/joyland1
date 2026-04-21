@@ -1,0 +1,120 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Алина",
+      "email": "asdfg@gmail.com",
+      "salt": "ffa0e23a37dab707c0b051de78af639f",
+      "password_hash": "74eb595781c0684cae06979ca483f6046c55cf8e88ac5829c588702111e5a077",
+      "created_at": "2026-03-04T12:16:26.072724Z"
+    },
+    {
+      "id": 2,
+      "name": "asdf",
+      "email": "mmmm@gmail.com",
+      "salt": "df3f1fdb6fa76494191a98c2dd60a3e7",
+      "password_hash": "c41bb39d99637742b3045a65b080544ea495accfb2d9402f7d355effd72cc7d1",
+      "created_at": "2026-03-04T12:17:24.663133Z"
+    },
+    {
+      "id": 3,
+      "name": "Бека",
+      "email": "aaaa@gmail.com",
+      "salt": "2f9338425ae7df3abf695a10b95278de",
+      "password_hash": "95e5c5faacd5d60b1efdb7ee58292ee88c1701ca52831e51c76922d4c8d0ce5e",
+      "created_at": "2026-03-04T12:18:42.200588Z"
+    },
+    {
+      "id": 4,
+      "name": "asdf",
+      "email": "llll@gmail.com",
+      "salt": "179227d5bc724272c5b503d383068aea",
+      "password_hash": "beaf98569493531ecc3f46377d95061c6b5b37dfc36c5860a9f74c48775401c7",
+      "created_at": "2026-03-04T12:19:45.833350Z"
+    },
+    {
+      "id": 5,
+      "name": "Ali",
+      "email": "zzz@gmail.com",
+      "salt": "79371b61f0c4e5a608b6efd60fada003",
+      "password_hash": "a5c27609029819b8abfc55022aac00b39af9cd399a14b316e1208ec98b4b3545",
+      "created_at": "2026-03-04T12:23:24.676904Z"
+    },
+    {
+      "id": 6,
+      "name": "ali",
+      "email": "nnn@gmail.com",
+      "salt": "0012c7f52be27d59ed6467f61044b0f9",
+      "password_hash": "d497a69a1d544114d64c9c1c387ae0006b856056ec578f2b2c55de15050e319e",
+      "created_at": "2026-03-04T12:31:53.832391Z"
+    },
+    {
+      "id": 7,
+      "name": "Алина",
+      "email": "aaa@gmail.com",
+      "salt": "1a1980a8c8307ad2d16dc6208f68c0ca",
+      "password_hash": "37b899eeec7028aa8a950f9f948e365e176f6ba0dfd001e57e2faf30ce2afa5b",
+      "created_at": "2026-03-04T12:37:52.657854Z"
+    },
+    {
+      "id": 8,
+      "name": "DDA",
+      "email": "mmm@gmail.com",
+      "salt": "2d805174c7025d9adc4c98a5138e0c39",
+      "password_hash": "4f21c277af0a1f52617187d616b008c73a0c620eab11f1540aa728a248d9d2d1",
+      "created_at": "2026-03-04T12:55:20.243633Z"
+    },
+    {
+      "id": 9,
+      "name": "alina",
+      "email": "qqq@gmail.com",
+      "salt": "7b00df7d1cb1c70eb5002b288e421d93",
+      "password_hash": "37a866e9dcf268bd0dfdb678e5a7727dd64b15491b51c9bd062b89fb31bd3fee",
+      "created_at": "2026-03-04T12:56:19.676821Z"
+    },
+    {
+      "id": 10,
+      "name": "али",
+      "email": "sss@gmail.com",
+      "salt": "5582707fc4dda0d64ceb5b2234e8b6d9",
+      "password_hash": "3e31a54a1aca09a63ce3cccb3f06c285c16cba782b0e695fbecb2e5a4f0962a9",
+      "created_at": "2026-03-04T12:58:20.910299Z"
+    },
+    {
+      "id": 11,
+      "name": "ali",
+      "email": "ddd@gmail.com",
+      "salt": "181fc9160e9974d971af7d02b97717f7",
+      "password_hash": "9c7084a265e0f6c213901acceeca89dcf6af685e4655f1bcf43d98e88596f500",
+      "created_at": "2026-03-04T13:03:09.785616Z"
+    },
+    {
+      "id": 12,
+      "name": "Alikhan",
+      "email": "qqq@mail.com",
+      "salt": "b301d9c8632de4657dfee073ecd6ab72",
+      "password_hash": "733cf71640f13a571f9c51e291360db02c6b6833fa696ec25c39e4267e455f03",
+      "created_at": "2026-03-18T09:46:17.915175Z"
+    },
+    {
+      "id": 13,
+      "name": "Alikhan",
+      "email": "ppp@mail.com",
+      "salt": "68271fd5cca13b071b575eb93dcb3a91",
+      "password_hash": "28de5b1a559576a0802e965eaab8f4ac58d27c4ddc02458c0d09e3fe0105326a",
+      "bio": "02.02.2006",
+      "image": "/api/uploads/13/avatar.webp",
+      "created_at": "2026-03-18T12:27:44.378922Z"
+    },
+    {
+      "id": 14,
+      "name": "Болатбек",
+      "email": "bolatbek@mail.com",
+      "salt": "b4505f10f4f18052dc22219d5edd69de",
+      "password_hash": "e27be981d3091e3ce514e8d3388a83d7ca82984644d360aa7eeaae854680c153",
+      "bio": "",
+      "image": "/api/uploads/14/avatar.webp",
+      "created_at": "2026-03-31T09:47:22.076201Z"
+    }
+  ]
+}

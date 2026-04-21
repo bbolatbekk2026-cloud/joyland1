@@ -1,0 +1,43 @@
+.book-grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:16px;
+}
+@media (max-width: 920px){
+  .book-grid{ grid-template-columns: 1fr; }
+}
+
+.book-card{
+  padding:16px;
+  border-radius: 22px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 16px 45px rgba(0,0,0,.28);
+  position:relative;
+  overflow:hidden;
+}
+.book-card::before{
+  content:"";
+  position:absolute; inset:-80px;
+  background: radial-gradient(circle at 15% 10%, rgba(124,92,255,.16), transparent 35%),
+              radial-gradient(circle at 85% 20%, rgba(34,211,238,.10), transparent 40%),
+              radial-gradient(circle at 30% 90%, rgba(251,191,36,.08), transparent 45%);
+  pointer-events:none;
+}
+
+.row2{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+.row3{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; }
+@media (max-width: 720px){
+  .row2,.row3{ grid-template-columns: 1fr; }
+}
+
+.booking-list{ display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+.b-item{
+  padding:10px 12px;
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(7,10,22,.35);
+}
+.b-item b{ color: var(--text); }
+.b-actions{ display:flex; gap:10px; margin-top:8px; flex-wrap:wrap; }
+.b-actions .btn{ padding:8px 10px; border-radius: 12px; }

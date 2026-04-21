@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JoyLand | Кіру / Тіркелу</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-blur blur-1"></div>
+  <div class="bg-blur blur-2"></div>
+  <div class="bg-blur blur-3"></div>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="brand">
+        <div class="brand-logo">★</div>
+        <div class="brand-text">
+          <h1>JoyLand</h1>
+          <p>Балалар ойын орталығы</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" id="loginTab">Кіру</button>
+        <button class="tab-btn" id="registerTab">Тіркелу</button>
+      </div>
+
+      <!-- КІРУ ФОРМАСЫ -->
+      <form class="form active" id="loginForm">
+        <h2>Қайта қош келдіңіз 👋</h2>
+        <p class="subtitle">Аккаунтыңызға кіріп, броньдарыңызды басқарыңыз</p>
+
+        <div class="input-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="example@mail.com" required />
+        </div>
+
+        <div class="input-group">
+          <label for="loginPassword">Құпиясөз</label>
+          <div class="password-box">
+            <input type="password" id="loginPassword" placeholder="Құпиясөзді енгізіңіз" required />
+            <button type="button" class="toggle-password" data-target="loginPassword">👁</button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="checkbox">
+            <input type="checkbox" />
+            <span>Мені есте сақтау</span>
+          </label>
+          <a href="#" class="link">Құпиясөзді ұмыттым</a>
+        </div>
+
+        <button type="submit" class="main-btn">Кіру</button>
+
+        <p class="switch-text">
+          Аккаунт жоқ па?
+          <span id="goRegister">Тіркелу</span>
+        </p>
+      </form>
+
+      <!-- ТІРКЕЛУ ФОРМАСЫ -->
+      <form class="form" id="registerForm">
+        <h2>Жаңа аккаунт ашу ✨</h2>
+        <p class="subtitle">JoyLand мүмкіндіктерін пайдалану үшін тіркеліңіз</p>
+
+        <div class="input-group">
+          <label for="fullName">Аты-жөні</label>
+          <input type="text" id="fullName" placeholder="Аты-жөніңіз" required />
+        </div>
+
+        <div class="input-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" placeholder="example@mail.com" required />
+        </div>
+
+        <div class="input-group">
+          <label for="registerPassword">Құпиясөз</label>
+          <div class="password-box">
+            <input type="password" id="registerPassword" placeholder="Кемінде 6 таңба" required />
+            <button type="button" class="toggle-password" data-target="registerPassword">👁</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="confirmPassword">Құпиясөзді растау</label>
+          <div class="password-box">
+            <input type="password" id="confirmPassword" placeholder="Қайта енгізіңіз" required />
+            <button type="button" class="toggle-password" data-target="confirmPassword">👁</button>
+          </div>
+        </div>
+
+        <button type="submit" class="main-btn">Тіркелу</button>
+
+        <p class="switch-text">
+          Аккаунт бар ма?
+          <span id="goLogin">Кіру</span>
+        </p>
+      </form>
+
+      <p class="message" id="messageBox"></p>
+    </div>
+  </main>
+
+
+<script src="auth.js"></script>
+<script src="register.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

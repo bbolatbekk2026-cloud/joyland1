@@ -1,0 +1,1489 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JoyLand — Бағалар</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI', sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      color:#fff;
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at top left, rgba(124,92,255,.25), transparent 25%),
+        radial-gradient(circle at right center, rgba(34,211,238,.16), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(16,185,129,.15), transparent 20%),
+        radial-gradient(circle at bottom right, rgba(245,158,11,.14), transparent 18%),
+        linear-gradient(180deg, #040816 0%, #020617 100%);
+      position:relative;
+    }
+
+    .container{
+      width:100%;
+      max-width:1500px;
+      margin:0 auto;
+      padding:0 32px;
+      position:relative;
+      z-index:2;
+    }
+
+    #bg{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .bg-blobs{
+      position:fixed;
+      inset:0;
+      overflow:hidden;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .blob{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:.28;
+      animation:floatBlob 15s ease-in-out infinite;
+    }
+
+    .b1{
+      width:340px;
+      height:340px;
+      left:-80px;
+      top:120px;
+      background:#7c5cff;
+    }
+
+    .b2{
+      width:380px;
+      height:380px;
+      right:-100px;
+      top:180px;
+      background:#22d3ee;
+      animation-delay:2s;
+    }
+
+    .b3{
+      width:320px;
+      height:320px;
+      left:18%;
+      bottom:-60px;
+      background:#10b981;
+      animation-delay:4s;
+    }
+
+    .b4{
+      width:280px;
+      height:280px;
+      right:14%;
+      bottom:-40px;
+      background:#f59e0b;
+      animation-delay:6s;
+    }
+
+    @keyframes floatBlob{
+      0%,100%{transform:translateY(0) scale(1)}
+      50%{transform:translateY(-30px) scale(1.08)}
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(14px);
+      background:rgba(5,10,25,.48);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+
+    .nav-inner{
+      min-height:84px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo{
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      border-radius:16px;
+      background:linear-gradient(135deg, rgba(124,92,255,.22), rgba(34,211,238,.18));
+      box-shadow:0 0 28px rgba(124,92,255,.25);
+      overflow:hidden;
+      flex-shrink:0;
+    }
+
+    .brand-title{
+      font-size:24px;
+      font-weight:800;
+      line-height:1.1;
+    }
+
+    .brand-sub{
+      font-size:13px;
+      color:#cbd5e1;
+      margin-top:2px;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#dbeafe;
+      padding:11px 16px;
+      border-radius:12px;
+      transition:.3s ease;
+      font-weight:600;
+    }
+
+    .menu a:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-2px);
+      color:#fff;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:14px 22px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      text-decoration:none;
+      cursor:pointer;
+      font-weight:700;
+      transition:.35s ease;
+      background:rgba(255,255,255,.06);
+      color:#fff;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,.1);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#7c5cff,#22d3ee);
+      box-shadow:0 10px 30px rgba(34,211,238,.18);
+      color:#fff;
+    }
+
+    .btn-primary:hover{
+      box-shadow:0 18px 40px rgba(124,92,255,.28);
+    }
+
+    .profile{
+      position:relative;
+    }
+
+    .profile-btn{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:#fff;
+      border-radius:14px;
+      padding:10px 14px;
+      cursor:pointer;
+    }
+
+    .avatar{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#7c5cff,#22d3ee);
+      display:inline-block;
+    }
+
+    .hello{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+      text-align:left;
+    }
+
+    .hi{
+      font-size:11px;
+      color:#cbd5e1;
+    }
+
+    .chev{
+      opacity:.8;
+    }
+
+    .profile-menu{
+      position:absolute;
+      top:calc(100% + 10px);
+      right:0;
+      min-width:220px;
+      display:none;
+      flex-direction:column;
+      gap:8px;
+      padding:10px;
+      border-radius:16px;
+      background:rgba(10,15,30,.92);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 15px 40px rgba(0,0,0,.3);
+      backdrop-filter:blur(16px);
+    }
+
+    .profile-menu.show{
+      display:flex;
+    }
+
+    .profile-menu a,
+    .profile-menu button{
+      width:100%;
+      text-align:left;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:12px;
+      padding:12px 14px;
+      color:#fff;
+      text-decoration:none;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    .profile-menu .danger{
+      color:#fecaca;
+    }
+
+    main{
+      position:relative;
+      z-index:2;
+    }
+
+    #prices{
+      padding:44px 0 80px;
+      min-height:calc(100vh - 84px);
+    }
+
+    .section-title{
+      margin-bottom:28px;
+    }
+
+    .section-title h2{
+      font-size:46px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#cbd5e1;
+      font-size:17px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .pricing{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(18px);
+      box-shadow:0 20px 80px rgba(0,0,0,.28);
+      padding:28px;
+      transition:.35s ease;
+    }
+
+    .pricing::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(255,255,255,.06), transparent 35%, transparent 70%, rgba(34,211,238,.06));
+      pointer-events:none;
+    }
+
+    .pricing > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .pricing:hover{
+      transform:translateY(-8px);
+      box-shadow:0 26px 90px rgba(0,0,0,.34);
+    }
+
+    .pricing h3{
+      font-size:31px;
+      margin-bottom:16px;
+      font-weight:800;
+    }
+
+    .price{
+      font-size:50px;
+      font-weight:900;
+      margin-bottom:18px;
+      line-height:1;
+    }
+
+    .price span{
+      font-size:18px;
+      color:#cbd5e1;
+      font-weight:700;
+    }
+
+    .list{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .list li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:#e2e8f0;
+      line-height:1.5;
+    }
+
+    .check{
+      width:22px;
+      height:22px;
+      min-width:22px;
+      border-radius:999px;
+      display:inline-grid;
+      place-items:center;
+      background:rgba(34,197,94,.18);
+      border:1px solid rgba(34,197,94,.28);
+      color:#86efac;
+      font-weight:900;
+      margin-top:1px;
+    }
+
+    .popular{
+      border-color:rgba(34,211,238,.45);
+      box-shadow:0 20px 90px rgba(34,211,238,.10);
+      transform:scale(1.02);
+    }
+
+    .popular:hover{
+      transform:scale(1.02) translateY(-8px);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      background:linear-gradient(135deg, rgba(124,92,255,.32), rgba(34,211,238,.26));
+      border:1px solid rgba(255,255,255,.08);
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .corner{
+      position:absolute;
+      top:18px;
+      right:18px;
+    }
+
+    .mt12{
+      margin-top:12px;
+    }
+
+    footer{
+      padding:30px 0 45px;
+      border-top:1px solid rgba(255,255,255,.06);
+      color:#94a3b8;
+      position:relative;
+      z-index:2;
+    }
+
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .foot-left{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .foot-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .tiny{
+      color:#cbd5e1;
+      font-size:14px;
+    }
+
+    .toast{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:999;
+      display:none;
+      min-width:260px;
+      max-width:360px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(10,15,30,.94);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 18px 40px rgba(0,0,0,.35);
+      backdrop-filter:blur(16px);
+      color:#fff;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .toast.show{
+      display:flex;
+    }
+
+    @media(max-width:1100px){
+      .grid-3{
+        grid-template-columns:1fr;
+      }
+
+      .popular,
+      .popular:hover{
+        transform:none;
+      }
+    }
+
+    @media(max-width:760px){
+      .container{
+        padding:0 18px;
+      }
+
+      .nav-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:14px 0;
+      }
+
+      .menu{
+        width:100%;
+      }
+
+      .section-title h2{
+        font-size:34px;
+      }
+
+      .pricing{
+        padding:20px;
+        border-radius:24px;
+      }
+
+      .price{
+        font-size:40px;
+      }
+
+      .menu a{
+        padding:10px 12px;
+      }
+    }
+    /* ---- */
+  :root{
+    --bg-main:#040816;
+    --bg-end:#020617;
+    --text-main:#ffffff;
+    --text-muted:#cbd5e1;
+    --nav-bg:rgba(5,10,25,.48);
+    --menu-text:#dbeafe;
+    --menu-hover-text:#ffffff;
+    --menu-hover-bg:rgba(255,255,255,.08);
+
+    --card-bg:rgba(255,255,255,.06);
+    --card-border:rgba(255,255,255,.08);
+    --card-soft:rgba(255,255,255,.04);
+
+    --input-bg:rgba(255,255,255,.08);
+    --input-text:#ffffff;
+    --input-border:rgba(255,255,255,.08);
+
+    --section-muted:#94a3b8;
+    --pill-text:#e2e8f0;
+
+    --chat-bg:#0f172a;
+    --chat-inner:#0b1020;
+    --chat-input-bg:#111827;
+    --bot-bg:#1e293b;
+    --user-bg:#22d3ee;
+    --user-text:#000000;
+
+    --footer-text:#94a3b8;
+  }
+
+  body.light-mode{
+    --bg-main:#f8fafc;
+    --bg-end:#e2e8f0;
+    --text-main:#0f172a;
+    --text-muted:#475569;
+    --nav-bg:rgba(255,255,255,.84);
+    --menu-text:#0f172a;
+    --menu-hover-text:#0f172a;
+    --menu-hover-bg:rgba(15,23,42,.08);
+
+    --card-bg:rgba(255,255,255,.88);
+    --card-border:rgba(15,23,42,.08);
+    --card-soft:rgba(15,23,42,.04);
+
+    --input-bg:#ffffff;
+    --input-text:#0f172a;
+    --input-border:#cbd5e1;
+
+    --section-muted:#475569;
+    --pill-text:#0f172a;
+
+    --chat-bg:#ffffff;
+    --chat-inner:#f1f5f9;
+    --chat-input-bg:#e2e8f0;
+    --bot-bg:#e2e8f0;
+    --user-bg:#22d3ee;
+    --user-text:#0f172a;
+
+    --footer-text:#475569;
+  }
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    min-height:100vh;
+    color:var(--text-main);
+    overflow-x:hidden;
+    background:
+      radial-gradient(circle at top left, rgba(124,92,255,.25), transparent 25%),
+      radial-gradient(circle at right center, rgba(34,211,238,.16), transparent 25%),
+      radial-gradient(circle at bottom left, rgba(16,185,129,.15), transparent 20%),
+      radial-gradient(circle at bottom right, rgba(245,158,11,.14), transparent 18%),
+      linear-gradient(180deg, var(--bg-main) 0%, var(--bg-end) 100%);
+    transition:background .35s ease,color .35s ease;
+  }
+
+  .container{
+    width:100%;
+    max-width:100%;
+    padding:0 48px;
+    position:relative;
+    z-index:2;
+  }
+
+  .bg-blobs{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+    pointer-events:none;
+  }
+
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:.35;
+    animation:floatBlob 14s ease-in-out infinite;
+  }
+
+  .blob1{
+    width:320px;
+    height:320px;
+    background:#7c5cff;
+    top:80px;
+    left:-80px;
+  }
+
+  .blob2{
+    width:360px;
+    height:360px;
+    background:#22d3ee;
+    top:220px;
+    right:-100px;
+    animation-delay:2s;
+  }
+
+  .blob3{
+    width:300px;
+    height:300px;
+    background:#14b8a6;
+    bottom:40px;
+    left:20%;
+    animation-delay:4s;
+  }
+
+  .blob4{
+    width:260px;
+    height:260px;
+    background:#f59e0b;
+    bottom:-40px;
+    right:18%;
+    animation-delay:6s;
+  }
+
+  @keyframes floatBlob{
+    0%,100%{ transform:translateY(0) scale(1); }
+    50%{ transform:translateY(-30px) scale(1.08); }
+  }
+
+  .particles{
+    position:fixed;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    overflow:hidden;
+  }
+
+  .particle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.22);
+    box-shadow:0 0 18px rgba(255,255,255,.18);
+    animation:rise linear infinite;
+  }
+
+  .particle:nth-child(1){ width:8px;height:8px;left:8%;animation-duration:16s;animation-delay:0s;top:100%; }
+  .particle:nth-child(2){ width:14px;height:14px;left:16%;animation-duration:20s;animation-delay:3s;top:100%; }
+  .particle:nth-child(3){ width:10px;height:10px;left:25%;animation-duration:18s;animation-delay:1s;top:100%; }
+  .particle:nth-child(4){ width:18px;height:18px;left:34%;animation-duration:22s;animation-delay:6s;top:100%; }
+  .particle:nth-child(5){ width:12px;height:12px;left:48%;animation-duration:19s;animation-delay:2s;top:100%; }
+  .particle:nth-child(6){ width:16px;height:16px;left:58%;animation-duration:24s;animation-delay:4s;top:100%; }
+  .particle:nth-child(7){ width:9px;height:9px;left:67%;animation-duration:17s;animation-delay:7s;top:100%; }
+  .particle:nth-child(8){ width:15px;height:15px;left:78%;animation-duration:23s;animation-delay:5s;top:100%; }
+  .particle:nth-child(9){ width:11px;height:11px;left:87%;animation-duration:21s;animation-delay:1s;top:100%; }
+  .particle:nth-child(10){ width:20px;height:20px;left:94%;animation-duration:26s;animation-delay:8s;top:100%; }
+
+  @keyframes rise{
+    0%{
+      transform:translateY(0) scale(.8);
+      opacity:0;
+    }
+    15%{
+      opacity:.8;
+    }
+    100%{
+      transform:translateY(-110vh) scale(1.15);
+      opacity:0;
+    }
+  }
+
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(14px);
+    background:var(--nav-bg);
+    border-bottom:1px solid var(--card-border);
+    transition:background .35s ease,border-color .35s ease;
+  }
+
+  .nav-inner{
+    min-height:84px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    animation:fadeUp .8s ease both;
+  }
+
+  .brand-logo{
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#7c5cff,#22d3ee);
+    box-shadow:0 0 25px rgba(124,92,255,.45);
+    font-size:24px;
+  }
+
+  .brand h2{
+    font-size:22px;
+    line-height:1;
+    margin-bottom:3px;
+    color:var(--text-main);
+  }
+
+  .brand p{
+    font-size:13px;
+    color:var(--text-muted);
+  }
+
+  .menu{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .menu a{
+    color:var(--menu-text);
+    text-decoration:none;
+    padding:11px 16px;
+    border-radius:12px;
+    transition:.3s ease;
+    font-weight:500;
+  }
+
+  .menu a:hover{
+    background:var(--menu-hover-bg);
+    color:var(--menu-hover-text);
+    transform:translateY(-2px);
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 22px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.35s ease;
+    border:1px solid var(--card-border);
+  }
+
+  .btn-primary{
+    background:linear-gradient(135deg,#7c5cff,#22d3ee);
+    color:#fff;
+    box-shadow:0 10px 30px rgba(34,211,238,.22);
+  }
+
+  .btn-primary:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 16px 40px rgba(124,92,255,.35);
+  }
+
+  .btn-secondary{
+    background:var(--card-bg);
+    color:var(--text-main);
+    backdrop-filter:blur(12px);
+  }
+
+  .btn-secondary:hover{
+    transform:translateY(-3px);
+    background:var(--card-soft);
+  }
+
+  .hero{
+    min-height:92vh;
+    display:flex;
+    align-items:center;
+    padding:40px 0 70px;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.35fr .95fr;
+    gap:30px;
+    width:100%;
+  }
+
+  .card{
+    position:relative;
+    overflow:hidden;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    backdrop-filter:blur(18px);
+    border-radius:28px;
+    box-shadow:0 12px 60px rgba(0,0,0,.25);
+    transition:.35s ease, background .35s ease, border-color .35s ease;
+  }
+
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, rgba(255,255,255,.07), transparent 35%, transparent 65%, rgba(34,211,238,.07));
+    pointer-events:none;
+  }
+
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 70px rgba(0,0,0,.34);
+  }
+
+  .hero-main{
+    padding:56px;
+    animation:fadeUp 1s ease .15s both;
+  }
+
+  .hero-main h1{
+    font-size:64px;
+    line-height:1.05;
+    margin-bottom:22px;
+    max-width:900px;
+    color:var(--text-main);
+  }
+
+  .hero-main p{
+    font-size:20px;
+    color:var(--text-muted);
+    max-width:850px;
+    line-height:1.7;
+    margin-bottom:28px;
+  }
+
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:28px;
+  }
+
+  .pill-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .pill{
+    padding:12px 16px;
+    border-radius:999px;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    color:var(--pill-text);
+    font-size:14px;
+    animation:pulseGlow 3s ease-in-out infinite;
+  }
+
+  .hero-side{
+    padding:34px;
+    animation:fadeUp 1s ease .35s both;
+  }
+
+  .hero-side h3{
+    font-size:28px;
+    margin-bottom:20px;
+    color:var(--text-main);
+  }
+
+  .offer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:14px;
+    padding:18px;
+    border-radius:18px;
+    margin-bottom:14px;
+    background:var(--card-soft);
+    border:1px solid var(--card-border);
+    transition:.3s ease;
+  }
+
+  .offer:hover{
+    transform:translateX(6px);
+    background:var(--card-bg);
+  }
+
+  .offer strong{
+    display:block;
+    margin-bottom:6px;
+    font-size:17px;
+    color:var(--text-main);
+  }
+
+  .offer span{
+    color:var(--text-muted);
+    font-size:14px;
+  }
+
+  .badge{
+    min-width:76px;
+    text-align:center;
+    padding:10px 12px;
+    border-radius:999px;
+    background:linear-gradient(135deg, rgba(124,92,255,.35), rgba(34,211,238,.25));
+    border:1px solid var(--card-border);
+    font-weight:700;
+    color:var(--text-main);
+  }
+
+  .side-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:18px;
+  }
+
+  section.content{
+    padding:20px 0 90px;
+  }
+
+  .section-title{
+    margin-bottom:28px;
+    animation:fadeUp .8s ease both;
+  }
+
+  .section-title h2{
+    font-size:42px;
+    margin-bottom:8px;
+    color:var(--text-main);
+  }
+
+  .section-title p{
+    color:var(--section-muted);
+    font-size:18px;
+  }
+
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+
+  .feature{
+    padding:30px;
+    border-radius:24px;
+    background:var(--card-soft);
+    border:1px solid var(--card-border);
+    backdrop-filter:blur(14px);
+    transition:.35s ease;
+    animation:fadeUp .9s ease both;
+  }
+
+  .feature:nth-child(2){ animation-delay:.15s; }
+  .feature:nth-child(3){ animation-delay:.3s; }
+
+  .feature:hover{
+    transform:translateY(-8px) scale(1.01);
+    box-shadow:0 16px 40px rgba(0,0,0,.25);
+  }
+
+  .icon{
+    width:62px;
+    height:62px;
+    border-radius:18px;
+    display:grid;
+    place-items:center;
+    margin-bottom:16px;
+    font-size:28px;
+    background:linear-gradient(135deg, rgba(124,92,255,.35), rgba(34,211,238,.22));
+    box-shadow:0 0 24px rgba(124,92,255,.2);
+    animation:pulseGlow 3s ease-in-out infinite;
+  }
+
+  .feature h4{
+    font-size:24px;
+    margin-bottom:10px;
+    color:var(--text-main);
+  }
+
+  .feature p{
+    color:var(--text-muted);
+    line-height:1.7;
+    font-size:16px;
+  }
+
+  footer{
+    padding:30px 0 45px;
+    border-top:1px solid var(--card-border);
+    color:var(--footer-text);
+    position:relative;
+    z-index:2;
+  }
+
+  .foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  @keyframes fadeUp{
+    from{
+      opacity:0;
+      transform:translateY(28px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+
+  @keyframes pulseGlow{
+    0%,100%{
+      box-shadow:0 0 0 rgba(34,211,238,0);
+    }
+    50%{
+      box-shadow:0 0 22px rgba(34,211,238,.2);
+    }
+  }
+
+  .chatbot-toggle{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    cursor:pointer;
+    z-index:9999;
+    background:linear-gradient(135deg,#7c5cff,#22d3ee);
+    color:#fff;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+  }
+
+  .chatbot-box{
+    position:fixed;
+    right:24px;
+    bottom:96px;
+    width:340px;
+    max-height:500px;
+    background:var(--chat-bg);
+    border:1px solid var(--card-border);
+    border-radius:18px;
+    overflow:hidden;
+    display:none;
+    flex-direction:column;
+    z-index:9999;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+  }
+
+  .chatbot-box.show{
+    display:flex;
+  }
+
+  .chatbot-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 16px;
+    background:linear-gradient(135deg,#7c5cff,#22d3ee);
+    color:#fff;
+    font-weight:700;
+  }
+
+  .chatbot-header button{
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+  }
+
+  .chatbot-messages{
+    padding:14px;
+    overflow-y:auto;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    background:var(--chat-inner);
+  }
+
+  .bot-msg,
+  .user-msg{
+    padding:10px 12px;
+    border-radius:12px;
+    max-width:85%;
+    line-height:1.4;
+  }
+
+  .bot-msg{
+    background:var(--bot-bg);
+    color:var(--text-main);
+    align-self:flex-start;
+  }
+
+  .user-msg{
+    background:var(--user-bg);
+    color:var(--user-text);
+    align-self:flex-end;
+  }
+
+  .chatbot-input-row{
+    display:flex;
+    gap:8px;
+    padding:12px;
+    background:var(--chat-input-bg);
+  }
+
+  .chatbot-input-row input{
+    flex:1;
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid var(--input-border);
+    background:var(--input-bg);
+    color:var(--input-text);
+  }
+
+  .chatbot-input-row button{
+    padding:10px 14px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#7c5cff,#22d3ee);
+    color:#fff;
+    cursor:pointer;
+  }
+
+  .theme-toggle-floating{
+    position:fixed;
+    right:24px;
+    bottom:96px;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:9999;
+    background:linear-gradient(135deg,#7c5cff,#22d3ee);
+    color:#fff;
+    font-size:24px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    transition:.3s ease;
+  }
+
+  .theme-toggle-floating:hover{
+    transform:translateY(-3px) scale(1.05);
+  }
+
+  @media(max-width:1100px){
+    .hero-main h1{
+      font-size:50px;
+    }
+
+    .hero-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  @media(max-width:760px){
+    .container{
+      padding:0 20px;
+    }
+
+    .nav-inner{
+      align-items:flex-start;
+      padding:14px 0;
+      flex-direction:column;
+    }
+
+    .menu{
+      width:100%;
+    }
+
+    .hero-main{
+      padding:32px 24px;
+    }
+
+    .hero-side{
+      padding:24px 20px;
+    }
+
+    .hero-main h1{
+      font-size:36px;
+    }
+
+    .hero-main p{
+      font-size:16px;
+    }
+
+    .grid-3{
+      grid-template-columns:1fr;
+    }
+
+    .section-title h2{
+      font-size:32px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+    <span class="blob b4"></span>
+  </div>
+
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo">
+          <svg width="42" height="42" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#7c5cff"/>
+                <stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#grad1)" />
+            <polygon points="50,20 60,45 85,45 65,60 75,85 50,70 25,85 35,60 15,45 40,45"
+                     fill="white" opacity="0.9"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">JoyLand</div>
+          <div class="brand-sub">Балалар ойын орталығы</div>
+        </div>
+      </div>
+
+      <div class="menu">
+        <div class="profile" id="profileWrap" style="display:none;">
+          <button class="profile-btn" id="profileBtn" type="button">
+            <span class="avatar" aria-hidden="true"></span>
+            <span class="hello">
+              <span class="hi">Сәлем,</span>
+              <b id="profileName">Пайдаланушы</b>
+            </span>
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+
+          <div class="profile-menu" id="profileMenu">
+            <a href="booking.html">📅 Брондау</a>
+            <a href="contacts.html">📍 Байланыс</a>
+            <button type="button" class="danger" id="logoutBtn">Шығу</button>
+          </div>
+        </div>
+
+        <a href="index.html">Басты</a>
+        <a href="services.html">Қызметтер</a>
+        <a href="prices.html">Бағалар</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="reviews.html">Пікірлер</a>
+        <a href="contacts.html">Байланыс</a>
+        <a class="btn btn-primary" href="booking.html">Брондау</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="prices">
+      <div class="container">
+        <div class="section-title">
+          <h2>Бағалар</h2>
+          <p>Өзіңізге ыңғайлы пакетті таңдаңыз</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="pricing">
+            <h3>Стандарт</h3>
+            <div class="price">2 500 ₸ <span>/ 1 сағат</span></div>
+            <ul class="list">
+              <li><span class="check">✓</span>Ойын аймақтарына кіру</li>
+              <li><span class="check">✓</span>Қадағалау және қауіпсіздік</li>
+              <li><span class="check">✓</span>Ата-ана зонасы</li>
+            </ul>
+            <div class="mt12"><a class="btn btn-primary" href="booking.html">Таңдау</a></div>
+          </div>
+
+          <div class="pricing popular">
+            <div class="badge corner">Ең танымал</div>
+            <h3>Отбасылық</h3>
+            <div class="price">6 500 ₸ <span>/ 3 сағат</span></div>
+            <ul class="list">
+              <li><span class="check">✓</span>2 балаға дейін</li>
+              <li><span class="check">✓</span>Тегін шұлық (бір рет)</li>
+              <li><span class="check">✓</span>Сыйлық купон</li>
+            </ul>
+            <div class="mt12"><a class="btn btn-primary" href="booking.html">Таңдау</a></div>
+          </div>
+
+          <div class="pricing">
+            <h3>Туған күн</h3>
+            <div class="price">35 000 ₸ <span>/ 2 сағат</span></div>
+            <ul class="list">
+              <li><span class="check">✓</span>Жеке зал + фотоаймақ</li>
+              <li><span class="check">✓</span>Музыка + безендіру</li>
+              <li><span class="check">✓</span>10 балаға дейін</li>
+            </ul>
+            <div class="mt12"><a class="btn btn-primary" href="booking.html">Таңдау</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="foot-left">
+        <div class="foot-brand">
+          <div class="logo">
+            <svg width="42" height="42" viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="grad2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#7c5cff"/>
+                  <stop offset="100%" stop-color="#22d3ee"/>
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="45" fill="url(#grad2)" />
+              <polygon points="50,20 60,45 85,45 65,60 75,85 50,70 25,85 35,60 15,45 40,45"
+                       fill="white" opacity="0.9"/>
+            </svg>
+          </div>
+          <div><b>JoyLand</b><div class="tiny">Балалар ойын орталығы</div></div>
+        </div>
+        <div class="tiny">© <span id="y"></span> Барлық құқықтар қорғалған.</div>
+      </div>
+      <div class="tiny foot-right"><b>Ескерту:</b> Бағалар өзгеруі мүмкін.</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">
+    <b id="toastTitle"></b>
+    <span id="toastText"></span>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const points = Array.from({ length: 70 }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      r: Math.random() * 2.2 + 1
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.35)';
+        ctx.fill();
+
+        for (let j = i + 1; j < points.length; j++) {
+          const q = points[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = 'rgba(255,255,255,' + (0.08 - dist / 1800) + ')';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    const profileBtn = document.getElementById('profileBtn');
+    const profileMenu = document.getElementById('profileMenu');
+
+    if (profileBtn && profileMenu) {
+      profileBtn.addEventListener('click', () => {
+        profileMenu.classList.toggle('show');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('#profileWrap')) {
+          profileMenu.classList.remove('show');
+        }
+      });
+    }
+
+    const y = document.getElementById('y');
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+<div class="chatbot-toggle" id="chatbotToggle">💬</div>
+  <div class="theme-toggle-floating" id="themeToggle">☀️</div>
+
+<div class="chatbot-box" id="chatbotBox">
+  <div class="chatbot-header">
+    <span>JoyLand Bot</span>
+    <button id="chatbotClose" type="button">✖</button>
+  </div>
+
+  <div class="chatbot-messages" id="chatbotMessages">
+    <div class="bot-msg">Сәлем! Мен JoyLand көмекшісімін 👋</div>
+  </div>
+
+  <div class="chatbot-input-row">
+    <input type="text" id="chatbotInput" placeholder="Сұрағыңызды жазыңыз..." />
+    <button id="chatbotSend" type="button">Жіберу</button>
+  </div>
+</div>
+
+<script src="chatbot.js"></script>
+<script src="darklight.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
